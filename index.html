@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You</title>
+  <style>
+    :root{
+      --bg:#0b1d33;      /* deep blue */
+      --card:#102a44;    /* soft blue */
+      --text:#e8f0fa;    /* off white */
+      --muted:#9fb6cc;
+      --accent:#6fa8dc;  /* gentle blue accent */
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      background:linear-gradient(180deg,#08162a 0%, var(--bg) 60%, #08162a 100%);
+      font-family: "Georgia", "Times New Roman", serif;
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .wrap{
+      width:100%;
+      max-width:720px;
+      padding:24px;
+    }
+    .card{
+      background:rgba(16,42,68,.9);
+      border-radius:16px;
+      padding:28px 26px 30px;
+      box-shadow:0 20px 40px rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.06);
+    }
+    h1{
+      font-weight:500;
+      letter-spacing:.4px;
+      margin:0 0 12px 0;
+    }
+    p{
+      margin:0 0 18px 0;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:15px;
+    }
+    .divider{
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+      margin:18px 0 22px;
+    }
+    .field{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin-top:6px;
+    }
+    input{
+      flex:1;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.12);
+      background:#0b2036;
+      color:var(--text);
+      font-size:15px;
+      outline:none;
+    }
+    input::placeholder{color:#8aa4bf}
+    button{
+      padding:12px 16px;
+      border-radius:10px;
+      border:none;
+      cursor:pointer;
+      background:linear-gradient(135deg, #5b9bd5, var(--accent));
+      color:#0a1a2b;
+      font-weight:600;
+      letter-spacing:.3px;
+    }
+    .hint{
+      margin-top:10px;
+      font-size:13px;
+      color:#8fb0cc;
+    }
+    .error{
+      display:none;
+      margin-top:12px;
+      color:#ffb3b3;
+      font-size:14px;
+    }
+    .secret{
+      display:none;
+      text-align:center;
+      padding:22px 10px 6px;
+    }
+    .quote{
+      font-size:22px;
+      line-height:1.5;
+      letter-spacing:.3px;
+      margin:10px 0 18px;
+    }
+    .sign{
+      margin-top:16px;
+      font-size:14px;
+      color:#c6d7ea;
+    }
+    .foot{
+      text-align:center;
+      margin-top:18px;
+      font-size:12px;
+      color:#7f9ab6;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" id="lock">
+      <h1>Hi dear</h1>
+      <p>Hope you know the password. Enter it and go ahead 😜</p>
+      <div class="divider"></div>
+      <div class="field">
+        <input id="pwd" type="password" inputmode="numeric" placeholder="Enter password" />
+        <button onclick="unlock()">Enter</button>
+      </div>
+      <div class="error" id="err">That doesn’t seem right. Try again.</div>
+      <div class="hint">A small secret waits on the other side.</div>
+    </div><div class="card secret" id="secret">
+  <div class="quote">“momo khilade divyanshi please 😔🫵🏻”</div>
+  <div class="divider"></div>
+  <div class="sign">— from your loving Akhil</div>
+  <div class="foot">Some things are meant to be unlocked, not explained.</div>
+</div>
+
+  </div>  <script>
+    const PASSWORD = "29032008";
+    function unlock(){
+      const v = document.getElementById('pwd').value.trim();
+      const err = document.getElementById('err');
+      if(v === PASSWORD){
+        document.getElementById('lock').style.display = 'none';
+        document.getElementById('secret').style.display = 'block';
+      } else {
+        err.style.display = 'block';
+      }
+    }
+  </script></body>
+</html>
